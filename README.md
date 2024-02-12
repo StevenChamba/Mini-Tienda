@@ -25,7 +25,7 @@ Lista de software y herramientas que necesitas para instalar y ejecutar este pro
 
 Una guía paso a paso sobre cómo configurar para desplegar el proyecto.
 
-Vamos a necesitar Xampp un servidor local.
+Vamos a necesitar Xampp como servidor local.
 
 ```bash
 # Paso 1 Crear un host vritual dentro de "C:\xampp\apache\conf\extra" en httpd-vhosts.conf.
