@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Cerrar la conexión y liberar recursos
+    // Cerrar la conexión
     $db->close();
 }
 ?>

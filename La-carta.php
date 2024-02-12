@@ -3,24 +3,23 @@ class Cart {
     protected $cart_contents = array();
     
     public function __construct(){
-        // get the shopping cart array from the session
+        // obtener el array del carrito de la sesión
         $this->cart_contents = !empty($_SESSION['cart_contents'])?$_SESSION['cart_contents']:NULL;
 		if ($this->cart_contents === NULL){
-			// set some base values
 			$this->cart_contents = array('cart_total' => 0, 'total_items' => 0);
 		}
     }
     
     /**
-	 * Cart Contents: Returns the entire cart array
+	 * Devuelve toda la matriz del carrito
 	 * @param	bool
 	 * @return	array
 	 */
 	public function contents(){
-		// rearrange the newest first
+		// reordenar primero el más nuevo
 		$cart = array_reverse($this->cart_contents);
 
-		// remove these so they don't create a problem when showing the cart table
+		//elimína para que no creen problemas al mostrar la tabla de carritos
 		unset($cart['total_items']);
 		unset($cart['cart_total']);
 
@@ -28,7 +27,7 @@ class Cart {
 	}
     
     /**
-	 * Get cart item: Returns a specific cart item details
+	 * Obtener artículo del carrito: Devuelve los detalles de un artículo específico del carrito
 	 * @param	string	$row_id
 	 * @return	array
 	 */
@@ -39,7 +38,7 @@ class Cart {
 	}
     
     /**
-	 * Total Items: Returns the total item count
+	 * Total Artículos: Devuelve el recuento total de artículos
 	 * @return	int
 	 */
 	public function total_items(){
@@ -47,7 +46,7 @@ class Cart {
 	}
     
     /**
-	 * Cart Total: Returns the total price
+	 * Total de la cesta: Devuelve el precio total
 	 * @return	int
 	 */
 	public function total(){
@@ -55,7 +54,7 @@ class Cart {
 	}
     
     /**
-	 * Insert items into the cart and save it to the session
+	 * Introducir artículos en el carrito y guardarlo en la sesión
 	 * @param	array
 	 * @return	bool
 	 */
@@ -66,26 +65,23 @@ class Cart {
             if(!isset($item['id'], $item['name'], $item['price'], $item['qty'])){
                 return FALSE;
             }else{
-                /*
-                 * Insert Item
-                 */
-                // prep the quantity
+                // preparar la cantidad
                 $item['qty'] = (float) $item['qty'];
                 if($item['qty'] == 0){
                     return FALSE;
                 }
-                // prep the price
+                // preparar el precio
                 $item['price'] = (float) $item['price'];
-                // create a unique identifier for the item being inserted into the cart
+                // crear un identificador único para el artículo que se inserta en el carrito
                 $rowid = md5($item['id']);
-                // get quantity if it's already there and add it on
+                // obtener la cantidad si ya existe y añadirla
                 $old_qty = isset($this->cart_contents[$rowid]['qty']) ? (int) $this->cart_contents[$rowid]['qty'] : 0;
                 // re-create the entry with unique identifier and updated quantity
                 $item['rowid'] = $rowid;
                 $item['qty'] += $old_qty;
                 $this->cart_contents[$rowid] = $item;
                 
-                // save Cart Item
+                // volver a crear la entrada con el identificador único y la cantidad actualizada
                 if($this->save_cart()){
                     return isset($rowid) ? $rowid : TRUE;
                 }else{

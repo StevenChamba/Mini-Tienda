@@ -30,7 +30,7 @@ if(!isset($_REQUEST['id'])){
     <h1>Estado de su Orden</h1>
     <p>Su pedido ha sido enviado exitosamente. La ID del pedido es #<?php echo $_GET['id']; ?></p>
            </div>
- </div><!--Panek cierra-->
+ </div>
 </div>
 </body>
 </html>
