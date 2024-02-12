@@ -1,3 +1,6 @@
+TITULO DEL PROYECTO
+Mini Tienda JSA
+
 *******************************************************************************************************************************
 1.- Crear la base de datos "db_carta" luego importar el archivo sql "db_carta.sql"
 
