@@ -27,6 +27,7 @@ include 'Configuracion.php';
   <li role="presentation"><a href="RegistroProducto.php">Registrar Productos</a></li>
   <li role="presentation"><a href="ActualizarProducto.php">Actualizar Productos</a></li>
   <li role="presentation"><a href="EliminarProducto.php">Eliminar Productos</a></li>
+  <li role="presentation"><a href="duenios.php">Duenios</a></li>
 </ul>
 </div>
 
